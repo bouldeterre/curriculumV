@@ -16,7 +16,7 @@
 \definecolor{orange}{HTML}{FDA333}
 \definecolor{purple}{HTML}{D3A4F9}
 \definecolor{red}{HTML}{FB4485}
-\definecolor{blue}{HTML}{6CE0F1}
+\definecolor{blue}{HTML}{00aced}
 
 \ifdefined\@cv@print
   \colorlet{green}{gray}
@@ -31,34 +31,15 @@
   \colorlet{header}{white}
 \fi
 \colorlet{textcolor}{gray}
-\colorlet{headercolor}{gray}
+\colorlet{boldcolor}{darkgray}
+\colorlet{headercolor}{blue}
 
 \RequirePackage[quiet]{fontspec}
 \RequirePackage[math-style=TeX]{unicode-math}
 
-\newfontfamily\bodyfont
-[]
-{}
-\newfontfamily\thinfont[]{}
-\newfontfamily\headingfont[]{}
-% \newfontfamily\bodyfont
-% [BoldFont=texgyreheros-bold.otf,
-% ItalicFont=texgyreheros-italic.otf,
-% BoldItalicFont=texgyreheros-bolditalic.otf]
-% {texgyreheros-regular.otf}
-% \newfontfamily\thinfont[]{Lato-Light.ttf}
-% \newfontfamily\headingfont[]{texgyreheros-bold.otf}
+\usepackage{fontspec}
+\setmainfont{Georgia}
 
-% \defaultfontfeatures{Mapping=tex-text}
-% \setmainfont
-% [Mapping=tex-text, Color=textcolor,
-% BoldFont=texgyreheros-bold.otf,
-% ItalicFont=texgyreheros-italic.otf,
-% BoldItalicFont=texgyreheros-bolditalic.otf
-% ]
-% {texgyreheros-regular.otf}
-
-\setmathfont{texgyreheros-regular.otf}
 %%%
 
 %%%%%%%%%%
@@ -69,17 +50,21 @@
 \newcommand{\rhead}[4]{%
   \begin{tikzpicture}[remember picture,overlay]
     \node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=4cm] (box) at (current page.north){};
+    
     \node [anchor=center] (name) at (box) {
       \fontsize{20pt}{72pt}\color{header}
-    { #1}  { \thinfont #2} { \headingfont #3}
+     \LARGE{ #2} { #3}
     };
+    \node [anchor=east] at (name.west) {%
+       #1%
+    };    
     \node [anchor=north] at (name.south) {%
       \fontsize{14pt}{24pt}\color{header}%
-      \thinfont #4%
+       #4 
     };
   \end{tikzpicture}
   \vspace{2.5cm}
-  \vspace{-2\parskip}
+  \vspace{-1\parskip}
 }
 
 %%%%%%%%%%%%%
@@ -104,21 +89,19 @@
   \stepcounter{colorCounter}%
 }
 
-\renewcommand{\section}[1]{
-  \par\vspace{\parskip}
-  {%
-    \LARGE\headingfont\color{headercolor}%
-    \@sectioncolor #1%
-  }
-  \par\vspace{\parskip}
+\def\@customBold#1{%
+      \textcolor{boldcolor} {\textbf {#1}}
 }
 
-\renewcommand{\subsection}[1]{
-  \par\vspace{.5\parskip}%
-  {%
-  \large\headingfont\color{headercolor} #1%
-  }
-  \par\vspace{.25\parskip}%
+\renewcommand{\section}[1]{
+\large
+  \par\vspace{\parskip}
+   \textcolor {blue}{#1} 
+  % {%
+  %   \large%
+  %   \@sectioncolor #1%
+  % }
+  \par\vspace{\parskip}
 }
 
 \pagestyle{empty}
@@ -133,13 +116,16 @@
 }{%
   \end{tabular*}
 }
-\renewcommand{\bfseries}{\headingfont\color{headercolor}}
+
+%\renewcommand{\bfseries}{ \color{boldcolor}}
+
 \newcommand{\entry}[4]{%
+  \normalsize
   #1&\parbox[t]{11.8cm}{%
-    \textbf{#2}%
+    \@customBold {#2}%
     \hfill%
     {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
-    #4\vspace{\parsep}%
+    #4\vspace{2\parsep }%
   }\\}
   
   %%%%%%%%%%%%%%
@@ -152,7 +138,7 @@
   \newenvironment{aside}{%
     \let\oldsection\section
     \renewcommand{\section}[1]{
-      \par\vspace{\baselineskip}{\Large\headingfont\color{headercolor} ##1}
+      \par\vspace{\baselineskip}{\large\color{headercolor} #1}
     }
     \begin{textblock}{3.6}(1.5, 4.33)
     \begin{flushright}
