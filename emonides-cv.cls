@@ -47,20 +47,25 @@
 %%%%%%%%%%
 
 \RequirePackage{tikz}
-\newcommand{\rhead}[4]{%
+\newcommand{\rhead}[5]{%
   \begin{tikzpicture}[remember picture,overlay]
     \node [rectangle, fill=fillheader, anchor=north, minimum width=\paperwidth, minimum height=4cm] (box) at (current page.north){};
     
-    \node [anchor=center] (name) at (box) {
+    
+    \node [anchor=center] (name) at (box.center) {
       \fontsize{20pt}{72pt}\color{header}
      \LARGE{ #2} { #3}
     };
-    \node [anchor=east] at (name.west) {%
+    \node [anchor=east] (picture) at (name.west) {%
        #1%
     };    
     \node [anchor=north] at (name.south) {%
       \fontsize{14pt}{24pt}\color{header}%
        #4 
+    };
+    \node [anchor=west, text=header, align=center] at (name.east) {%
+      \fontsize{14pt}{24pt} %\color{header}
+       #5
     };
   \end{tikzpicture}
   \vspace{2.5cm}
@@ -125,7 +130,7 @@
     \@customBold {#2}%
     \hfill%
     {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
-    #4\vspace{2\parsep }%
+      \small #4\vspace{2\parsep }%
   }\\}
   
   %%%%%%%%%%%%%%
@@ -150,5 +155,9 @@
     \let\section\oldsection
   }
   
-  \RequirePackage[left=6.1cm,top=2cm,right=1.5cm,bottom=2.5cm,nohead,nofoot]{geometry}
-  \RequirePackage{hyperref}
+  
+
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+
+% \RequirePackage[left=6.1cm,top=0cm,right=0cm,bottom=0cm,nohead,nofoot]{geometry}
+\RequirePackage{hyperref}
