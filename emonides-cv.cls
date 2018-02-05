@@ -106,9 +106,15 @@
   %   \large%
   %   \@sectioncolor #1%
   % }
-  \par\vspace{\parskip}
+  \par\vspace{0.5\parskip}
 }
 
+\newcommand{\sectiontwo}[1]{%
+\large
+  \par\vspace{\parskip}
+   \textcolor {blue}{#1} 
+  }
+  
 \pagestyle{empty}
 
 %%%%%%%%%%%%%%%%%%%%
@@ -130,9 +136,18 @@
     \@customBold {#2}%
     \hfill%
     {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
-      \small #4\vspace{2\parsep }%
+      \small #4\vspace{1\parsep }%
   }\\}
   
+  \newcommand{\entrytwo}[4]{%
+    \normalsize
+    #1&\parbox[t]{11.8cm}{%
+      \@customBold {#2}%
+      \hfill%
+      {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
+        \small #4\vspace{1\parsep }%
+    }\\}
+    
   %%%%%%%%%%%%%%
   % Side block %
   %%%%%%%%%%%%%%
@@ -157,7 +172,7 @@
   
   
 
-\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage[a4paper, total={6in, 8in}, nofoot]{geometry}
 
 % \RequirePackage[left=6.1cm,top=0cm,right=0cm,bottom=0cm,nohead,nofoot]{geometry}
 \RequirePackage{hyperref}
