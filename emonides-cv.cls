@@ -34,10 +34,8 @@
 \colorlet{boldcolor}{darkgray}
 \colorlet{headercolor}{blue}
 
-\RequirePackage[quiet]{fontspec}
 \RequirePackage[math-style=TeX]{unicode-math}
 
-\usepackage{fontspec}
 \setmainfont{Georgia}
 
 %%%
@@ -58,10 +56,10 @@
     };
     \node [anchor=east] (picture) at (name.west) {%
        #1%
-    };    
+    };
     \node [anchor=north] at (name.south) {%
       \fontsize{14pt}{24pt}\color{header}%
-       #4 
+       #4
     };
     \node [anchor=west, text=header, align=center] at (name.east) {%
       \fontsize{14pt}{24pt} %\color{header}
@@ -101,7 +99,7 @@
 \renewcommand{\section}[1]{
 \large
   \par\vspace{\parskip}
-   \textcolor {blue}{#1} 
+   \textcolor {blue}{#1}
   % {%
   %   \large%
   %   \@sectioncolor #1%
@@ -112,7 +110,7 @@
 \newcommand{\sectiontwo}[1]{%
 \large
   \par\vspace{\parskip}
-   \textcolor {blue}{#1} 
+   \textcolor {blue}{#1}
   }
   
 \pagestyle{empty}
@@ -155,21 +153,21 @@
   \RequirePackage[absolute,overlay]{textpos}
   \setlength{\TPHorizModule}{1cm}
   \setlength{\TPVertModule}{1cm}
-  \newenvironment{aside}{%
-    \let\oldsection\section
-    \renewcommand{\section}[1]{
-      \par\vspace{\baselineskip}{\large\color{headercolor} #1}
-    }
-    \begin{textblock}{3.6}(1.5, 4.33)
-    \begin{flushright}
-    \obeycr
-  }{%
-    \restorecr
-    \end{flushright}
-    \end{textblock}
-    \let\section\oldsection
-  }
-  
+  % \newenvironment{aside}{
+  %   \let\oldsection\section
+  %   \renewcommand{\section}[1]{
+  %     \par\vspace{\baselineskip}{\large\color{headercolor} #1}
+  %   }
+  %   \begin{textblock}{3.6}(1.5, 4.33)
+  %   \begin{flushright}
+  %   \obeycr
+  % }{
+  %   \restorec
+  %   \end{flushright}
+  %   \end{textblock}
+  %   \let\section\oldsection
+  % }
+  %
   
 
 \usepackage[a4paper, total={6in, 8in}, nofoot]{geometry}
