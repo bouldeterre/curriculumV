@@ -10,7 +10,7 @@
 
 \definecolor{darkgray}{HTML}{333333}
 \definecolor{gray}{HTML}{4D4D4D}
-\definecolor{lightgray}{HTML}{999999}
+\definecolor{lightgray}{HTML}{575757}
 
 \definecolor{green}{HTML}{C2E15F}
 \definecolor{orange}{HTML}{FDA333}
@@ -66,8 +66,8 @@
        #5
     };
   \end{tikzpicture}
-  \vspace{2.5cm}
-  \vspace{-1\parskip}
+  \vspace{1cm}
+  % \vspace{-1\parskip}
 }
 
 %%%%%%%%%%%%%
