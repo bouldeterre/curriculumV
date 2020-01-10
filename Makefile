@@ -11,4 +11,4 @@ clean:
 build:
 	lualatex emonides-cv.tex
 
-re: clean build	
+re: clean build
